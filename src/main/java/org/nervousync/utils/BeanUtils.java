@@ -16,6 +16,7 @@
  */
 package org.nervousync.utils;
 
+import org.nervousync.annotations.beans.BeanProperties;
 import org.nervousync.annotations.beans.BeanProperty;
 import org.nervousync.beans.config.TransferConfig;
 import org.nervousync.exceptions.utils.DataInvalidException;
@@ -270,6 +271,9 @@ public final class BeanUtils {
 			this.fieldType = field.getType();
 			this.propertyMappings = new ArrayList<>();
 			Arrays.asList(field.getAnnotationsByType(BeanProperty.class)).forEach(this::registerProperty);
+			Optional.ofNullable(field.getAnnotation(BeanProperties.class))
+					.map(beanProperties -> Arrays.asList(beanProperties.value()))
+					.ifPresent(beanProperties -> beanProperties.forEach(this::registerProperty));
 			this.propertyMappings.sort((o1, o2) -> o2.compare(o1));
 		}
 
