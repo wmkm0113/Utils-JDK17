@@ -27,11 +27,5 @@ import jakarta.xml.bind.annotation.adapters.XmlAdapter;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.1.0 $ $Date: Jun 21, 2023 10:25:22 $
  */
-public abstract class AbstractAdapter<BoundType> extends XmlAdapter<String, BoundType> {
-
-    @Override
-    public abstract BoundType unmarshal(String var1) throws Exception;
-
-    @Override
-    public abstract String marshal(BoundType var1) throws Exception;
+public abstract class AbstractAdapter extends XmlAdapter<String, Object> {
 }

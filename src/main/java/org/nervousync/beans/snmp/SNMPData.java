@@ -27,7 +27,7 @@ import org.nervousync.utils.DateTimeUtils;
 import org.snmp4j.smi.VariableBinding;
 
 /**
- * <h2 class="en-US">Reading data maps of SNMP datas</h2>
+ * <h2 class="en-US">Reading data maps of SNMP data</h2>
  * <h2 class="zh-CN">从SNMP读取的数据结果映射</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>

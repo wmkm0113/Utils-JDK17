@@ -25,5 +25,19 @@ package org.nervousync.enumerations.launcher;
  * @version $Revision: 1.0.0 $Date: Feb 27, 2024 10:49:12 $
  */
 public enum StartupType {
-	AUTO, MANUAL, DISABLE
+	/**
+	 * <span class="en-US">Automatic</span>
+	 * <span class="zh-CN">自动</span>
+	 */
+	AUTO,
+	/**
+	 * <span class="en-US">Manual</span>
+	 * <span class="zh-CN">手动</span>
+	 */
+	MANUAL,
+	/**
+	 * <span class="en-US">Disable</span>
+	 * <span class="zh-CN">禁用</span>
+	 */
+	DISABLE
 }

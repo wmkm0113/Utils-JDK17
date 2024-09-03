@@ -27,7 +27,7 @@ import org.nervousync.utils.ClassUtils;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.1.0 $ $Date: Jun 25, 2023 11:27:18 $
  */
-public abstract class AbstractBeanAdapter extends AbstractAdapter<BeanObject> {
+public abstract class AbstractBeanAdapter extends AbstractAdapter {
 
     protected final Class<?> beanClass;
 

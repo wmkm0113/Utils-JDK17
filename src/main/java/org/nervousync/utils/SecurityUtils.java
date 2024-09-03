@@ -63,8 +63,8 @@ import java.util.*;
  */
 public final class SecurityUtils {
     /**
-     * <span class="en-US">Logger instance</span>
-     * <span class="zh-CN">日志实例</span>
+     * <span class="en-US">Multilingual supported logger instance</span>
+     * <span class="zh-CN">多语言支持的日志对象</span>
      */
     private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(SecurityUtils.class);
     /**
@@ -2344,7 +2344,7 @@ public final class SecurityUtils {
      * <span class="zh-CN">生成的密钥对</span>
      */
     public static KeyPair RSAKeyPair(final int keySize, final String randomAlgorithm) {
-        return CertificateUtils.keyPair("RSA", randomAlgorithm, keySize);
+        return CertificateUtils.keyPair("RSA", randomAlgorithm, Globals.DEFAULT_VALUE_STRING, keySize);
     }
 
     /**
@@ -2436,7 +2436,7 @@ public final class SecurityUtils {
      * <span class="zh-CN">生成的密钥对</span>
      */
     public static KeyPair SM2KeyPair(final String randomAlgorithm) {
-        return CertificateUtils.keyPair("EC", randomAlgorithm, Globals.INITIALIZE_INT_VALUE);
+        return CertificateUtils.keyPair("EC", randomAlgorithm, "sm2p256v1", Globals.INITIALIZE_INT_VALUE);
     }
 
     /**

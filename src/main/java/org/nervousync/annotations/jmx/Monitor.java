@@ -14,36 +14,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.nervousync.beans.transfer.basic;
 
-import org.nervousync.beans.transfer.AbstractAdapter;
+package org.nervousync.annotations.jmx;
+
 import org.nervousync.commons.Globals;
 
-import java.util.Optional;
+import java.lang.annotation.*;
 
 /**
- * <h2 class="en-US">Integer DataConverter</h2>
- * <h2 class="zh-CN">Integer数据转换器</h2>
+ * <h2 class="en-US">JMX monitoring utility collections</h2>
+ * <h2 class="zh-CN">JMX监控工具集</h2>
  *
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
- * @version $Revision: 1.1.0 $ $Date: Jun 21, 2023 11:31:46 $
+ * @version $Revision: 1.0.0 $ $Date: Feb 27, 2024 15:31:16 $
  */
-public final class IntegerAdapter extends AbstractAdapter {
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
-     */
-    @Override
-    public String marshal(final Object object) {
-        return Optional.ofNullable(object)
-				.map(Object::toString)
-				.orElse(Globals.DEFAULT_VALUE_STRING);
-    }
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
+public @interface Monitor {
 
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
-     */
-    @Override
-    public Object unmarshal(final String object) {
-        return Optional.ofNullable(object).map(Integer::valueOf).orElse(null);
-    }
+	/**
+	 * @return <span class="en-US">MBean identification code</span>
+	 * <span class="zh-CN">MBean唯一标识</span>
+	 */
+	String domain();
+
+	/**
+	 * @return <span class="en-US">MBean type</span>
+	 * <span class="zh-CN">MBean类型</span>
+	 */
+	String type();
+
+	/**
+	 * @return <span class="en-US">MBean name</span>
+	 * <span class="zh-CN">MBean名称</span>
+	 */
+	String name() default Globals.DEFAULT_VALUE_STRING;
 }

@@ -36,12 +36,20 @@ public abstract class AbstractException extends Exception {
 	 */
     @Serial
 	private static final long serialVersionUID = 3698481050554660066L;
+	/**
+	 * <span class="en-US">Internationalization information agent</span>
+	 * <span class="zh-CN">国际化信息代理</span>
+	 */
 	private final MultilingualUtils.Agent multiAgent = MultilingualUtils.newAgent(this.getClass());
 	/**
 	 * <span class="en-US">Error identified code</span>
 	 * <span class="zh-CN">错误识别代码</span>
 	 */
 	private final long errorCode;
+	/**
+	 * <span class="en-US">Details message of error</span>
+	 * <span class="zh-CN">错误详细信息</span>
+	 */
 	private final String detailMessage;
 	/**
 	 * <h3 class="en-US">Constructor method for NetworkInfoException</h3>

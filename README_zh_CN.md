@@ -57,10 +57,8 @@ Java开发工具包是为了提供接口稳定、集成简单、可重用的工�
 **运行：** OpenJDK 17+ 或兼容版本
 
 ## 生命周期:
-**功能冻结：** 
-2029年12月31日   
-**安全更新：** 
-2032年12月31日
+**功能冻结：** 2029年12月31日   
+**安全更新：** 2032年12月31日
 
 ## 使用方法
 **Maven：**
@@ -269,8 +267,7 @@ JavaBean 与 XML 的转换是通过JAXB实现，与 JSON/YAML 的转换是通过
 + 转换为JavaBean的方法中，参数 “schemaPaths” 可以为 namespace_uri
 
 ## 安全工厂
-**类名** 
-org.nervousync.security.factory.SecureFactory   
+**类名** org.nervousync.security.factory.SecureFactory   
 工具包提供了一个安全工厂类来帮助开发人员保存不同的加密解密配置信息，方便开发人员对数据进行便捷的加密解密操作。   
 **安全工厂初始化**   
 安全工厂会自动读取配置文件，并将安全配置信息注册到安全工厂。   
@@ -311,7 +308,7 @@ org.nervousync.security.factory.SecureFactory
 通过调用 ConfigureManager 的 removeConfigure 方法移除配置文件信息，传入的参数为配置文件的JavaBean定义类，同时需要传入一个类型为字符串的 suffix 参数，用于移除特定的配置文件。
 **注意：** 如果传入的参数 suffix 为 null 或空字符串，则移除指定类型的所有配置文件。
 **配置文件的自动加载**
-让需要自动加载配置文件的类继承 org.nervousync.configs.AutoConfigLauncher 抽象类，在类中添加类型为配置文件类的属性，并在属性上添加 org.nervousync.annotations.configs.Configure 注解，
+让需要自动加载配置文件的类继承 org.nervousync.configs.AutoConfig 抽象类，在类中添加类型为配置文件类的属性，并在属性上添加 org.nervousync.annotations.configs.Configure 注解，
 如果此类型的配置文件存在多个，则可以通过 org.nervousync.annotations.configs.Configure 注解的 value 属性指定使用哪一个配置文件。   
 **配置文件的密码保护**   
 在配置文件中总会涉及到各种密码的保存，为了防止密码通过配置文件泄露，开发人员可以在配置文件JavaBean定义类的密码属性上，添加 org.nervousync.annotations.configs.Password 注解，
@@ -405,8 +402,7 @@ org.nervousync.annotations.launcher.Launcher 注解的 value 属性值为启动�
 
 ## 文件操作的扩展
 ### Zip文件操作
-**所在包**: 
-org.nervousync.zip  
+**所在包**: org.nervousync.zip  
 开发人员可以使用 ZipFile 创建 zip 文件、将文件添加到 zip 或从 zip 中提取文件。
 支持分割存档文件、中日韩注释和入口路径、标准和AES加密/解密数据。
 
@@ -430,6 +426,6 @@ org.nervousync.zip
 
 ## 赞助与鸣谢
 <span id="JetBrains">
-    <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" width="100px" height="100px" alt="JetBrains Logo (Main) logo.">
+    <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" height="40px" alt="JetBrains Logo (Main) logo.">
     <span>非常感谢 <a href="https://www.jetbrains.com/">JetBrains</a> 通过许可证赞助我们的开源项目。</span>
 </span>

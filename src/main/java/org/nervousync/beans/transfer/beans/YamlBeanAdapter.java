@@ -20,8 +20,6 @@ import org.nervousync.beans.core.BeanObject;
 import org.nervousync.commons.Globals;
 import org.nervousync.utils.StringUtils;
 
-import java.util.Optional;
-
 /**
  * <h2 class="en-US">JavaBean YamlConverter</h2>
  * <h2 class="zh-CN">JavaBean数据Yaml转换器</h2>
@@ -39,20 +37,21 @@ public final class YamlBeanAdapter extends AbstractBeanAdapter {
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
      */
     @Override
-    public String marshal(final BeanObject object) {
-        return Optional.ofNullable(object)
-				.map(BeanObject::toYaml)
-				.orElse(Globals.DEFAULT_VALUE_STRING);
+    public String marshal(final Object object) {
+        if (object instanceof BeanObject) {
+            return ((BeanObject) object).toYaml();
+        }
+        return Globals.DEFAULT_VALUE_STRING;
     }
 
     /**
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
      */
     @Override
-    public BeanObject unmarshal(final String string) {
+    public Object unmarshal(final String string) {
         if (StringUtils.isEmpty(string)) {
             return null;
         }
-        return (BeanObject) StringUtils.stringToObject(string, StringUtils.StringType.YAML, this.beanClass);
+        return StringUtils.stringToObject(string, StringUtils.StringType.YAML, this.beanClass);
     }
 }

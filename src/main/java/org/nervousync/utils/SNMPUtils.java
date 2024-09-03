@@ -55,8 +55,8 @@ public final class SNMPUtils {
      */
     private static volatile SNMPUtils INSTANCE = null;
     /**
-     * <span class="en-US">Logger instance</span>
-     * <span class="zh-CN">日志实例</span>
+     * <span class="en-US">Multilingual supported logger instance</span>
+     * <span class="zh-CN">多语言支持的日志对象</span>
      */
     private static final LoggerUtils.Logger LOGGER = LoggerUtils.getLogger(SNMPUtils.class);
     /**
@@ -425,10 +425,10 @@ public final class SNMPUtils {
                 UsmUser usmUser = new UsmUser(securityName, authProtocol, authPassword, privProtocol, privPassword);
                 switch (targetHost.getProtocol()) {
                     case TCP:
-                        this.tcpAgent.getUSM().addUser(securityName, usmUser);
+                        this.tcpAgent.getUSM().addUser(usmUser);
                         break;
                     case UDP:
-                        this.udpAgent.getUSM().addUser(securityName, usmUser);
+                        this.udpAgent.getUSM().addUser(usmUser);
                         break;
                 }
             }

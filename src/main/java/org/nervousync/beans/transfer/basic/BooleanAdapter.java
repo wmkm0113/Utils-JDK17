@@ -28,12 +28,12 @@ import java.util.Optional;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.1.0 $ $Date: Jun 21, 2023 11:27:18 $
  */
-public final class BooleanAdapter extends AbstractAdapter<Boolean> {
+public final class BooleanAdapter extends AbstractAdapter {
     /**
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
      */
     @Override
-    public String marshal(Boolean object) {
+    public String marshal(Object object) {
         return Optional.ofNullable(object)
 				.map(Object::toString)
 				.orElse(Globals.DEFAULT_VALUE_STRING);
@@ -43,7 +43,7 @@ public final class BooleanAdapter extends AbstractAdapter<Boolean> {
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
      */
     @Override
-    public Boolean unmarshal(final String object) {
+    public Object unmarshal(final String object) {
         return Optional.ofNullable(object).map(Boolean::valueOf).orElse(null);
     }
 }

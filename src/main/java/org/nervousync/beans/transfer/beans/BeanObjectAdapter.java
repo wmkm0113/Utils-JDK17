@@ -16,7 +16,6 @@
  */
 package org.nervousync.beans.transfer.beans;
 
-import org.nervousync.beans.core.BeanObject;
 import org.nervousync.commons.Globals;
 import org.nervousync.utils.StringUtils;
 
@@ -39,9 +38,9 @@ public final class BeanObjectAdapter extends AbstractBeanAdapter {
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
      */
     @Override
-    public String marshal(final BeanObject object) {
+    public String marshal(final Object object) {
         return Optional.ofNullable(object)
-				.map(BeanObject::toString)
+				.map(Object::toString)
 				.orElse(Globals.DEFAULT_VALUE_STRING);
     }
 
@@ -49,10 +48,10 @@ public final class BeanObjectAdapter extends AbstractBeanAdapter {
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
      */
     @Override
-    public BeanObject unmarshal(final String string) {
+    public Object unmarshal(final String string) {
         if (StringUtils.isEmpty(string)) {
             return null;
         }
-        return (BeanObject) StringUtils.stringToObject(string, this.beanClass);
+        return StringUtils.stringToObject(string, this.beanClass);
     }
 }

@@ -57,10 +57,8 @@ Java開發套件是為了提供介面穩定、集成簡單、可重用的工具�
 **運行：** OpenJDK 17+ 或相容版本
 
 ## 生命週期:
-**功能凍結：** 
-2029年12月31日   
-**安全更新：** 
-2032年12月31日
+**功能凍結：** 2029年12月31日   
+**安全更新：** 2032年12月31日
 
 ## 使用方法
 **Maven：**
@@ -269,8 +267,7 @@ JavaBean 與 XML 的轉換是通過JAXB實現，與 JSON/YAML 的轉換是通過
 + 轉換為JavaBean的方法中，參數 “schemaPaths” 可以為 namespace_uri
 
 ## 安全工廠
-**類名** 
-org.nervousync.security.factory.SecureFactory   
+**類名** org.nervousync.security.factory.SecureFactory   
 工具包提供了一個安全工廠類來幫助開發人員保存不同的加密解密配置資訊，方便開發人員對資料進行便捷的加密解密操作。   
 **安全工廠初始化**   
 安全工廠會自動讀取設定檔，並將安全配置資訊註冊到安全工廠。   
@@ -311,7 +308,7 @@ org.nervousync.security.factory.SecureFactory
 通過調用 ConfigureManager 的 removeConfigure 方法移除設定檔資訊，傳入的參數為設定檔的JavaBean定義類，同時需要傳入一個類型為字串的 suffix 參數，用於移除特定的設定檔。
 **注意：** 如果傳入的參數 suffix 為 null 或空字串，則移除指定類型的所有設定檔。
 **設定檔的自動載入**
-讓需要自動載入設定檔的類繼承 org.nervousync.configs.AutoConfigLauncher 抽象類別，在類中添加類型為設定檔類的屬性，並在屬性上添加 org.nervousync.annotations.configs.Configure 注解，
+讓需要自動載入設定檔的類繼承 org.nervousync.configs.AutoConfig 抽象類別，在類中添加類型為設定檔類的屬性，並在屬性上添加 org.nervousync.annotations.configs.Configure 注解，
 如果此類型的設定檔存在多個，則可以通過 org.nervousync.annotations.configs.Configure 注解的 value 屬性指定使用哪一個設定檔。   
 **設定檔的密碼保護**   
 在設定檔中總會涉及到各種密碼的保存，為了防止密碼通過設定檔洩露，開發人員可以在設定檔JavaBean定義類的密碼屬性上，添加 org.nervousync.annotations.configs.Password 注解，
@@ -405,8 +402,7 @@ org.nervousync.annotations.launcher.Launcher 注解的 value 屬性值為啟動�
 
 ## 檔操作的擴展
 ### Zip檔操作
-**所在包**: 
-org.nervousync.zip  
+**所在包**: org.nervousync.zip  
 開發人員可以使用 ZipFile 創建 zip 檔、將檔添加到 zip 或從 zip 中提取文件。
 支援分割存檔檔、中日韓注釋和入口路徑、標準和AES加密/解密資料。
 
@@ -430,6 +426,6 @@ org.nervousync.zip
 
 ## 贊助與鳴謝
 <span id="JetBrains">
-    <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" width="100px" height="100px" alt="JetBrains Logo (Main) logo.">
+    <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" height="40px" alt="JetBrains Logo (Main) logo.">
     <span>非常感謝 <a href="https://www.jetbrains.com/">JetBrains</a> 通過許可證贊助我們的開源項目。</span>
 </span>

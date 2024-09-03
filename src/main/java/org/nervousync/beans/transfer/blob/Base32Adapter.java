@@ -17,9 +17,10 @@
 package org.nervousync.beans.transfer.blob;
 
 import org.nervousync.beans.transfer.AbstractAdapter;
-import org.nervousync.commons.Globals;
+import org.nervousync.utils.CollectionUtils;
 import org.nervousync.utils.StringUtils;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -29,23 +30,30 @@ import java.util.Optional;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.1.0 $ $Date: Jun 21, 2023 11:36:08 $
  */
-public final class Base32Adapter extends AbstractAdapter<byte[]> {
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
-     */
-    @Override
-	public String marshal(final byte[] object) {
-        return Optional.ofNullable(object)
-                .map(StringUtils::base32Encode)
-                .orElse(Globals.DEFAULT_VALUE_STRING);
-    }
-    /**
-     * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
-     */
-    @Override
-    public byte[] unmarshal(final String string) {
-        return Optional.ofNullable(string)
-                .map(StringUtils::base32Decode)
-                .orElse(null);
-    }
+public final class Base32Adapter extends AbstractAdapter {
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
+	 */
+	@Override
+	public String marshal(final Object object) {
+		List<?> convertList = CollectionUtils.toList(object);
+		byte[] dataBytes = new byte[convertList.size()];
+		for (int i = 0; i < convertList.size(); i++) {
+			Object obj = convertList.get(i);
+			if (obj instanceof Byte) {
+				dataBytes[i] = (Byte) obj;
+			}
+		}
+		return StringUtils.base32Encode(dataBytes);
+	}
+
+	/**
+	 * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
+	 */
+	@Override
+	public Object unmarshal(final String string) {
+		return Optional.ofNullable(string)
+				.map(StringUtils::base32Decode)
+				.orElse(null);
+	}
 }

@@ -28,12 +28,12 @@ import java.util.Optional;
  * @author Steven Wee	<a href="mailto:wmkm0113@gmail.com">wmkm0113@gmail.com</a>
  * @version $Revision: 1.1.0 $ $Date: Jun 21, 2023 11:28:22 $
  */
-public final class ByteAdapter extends AbstractAdapter<Byte> {
+public final class ByteAdapter extends AbstractAdapter {
     /**
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
      */
     @Override
-    public String marshal(final Byte object) {
+    public String marshal(final Object object) {
         return Optional.ofNullable(object)
 				.map(Object::toString)
 				.orElse(Globals.DEFAULT_VALUE_STRING);
@@ -42,7 +42,7 @@ public final class ByteAdapter extends AbstractAdapter<Byte> {
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
      */
     @Override
-    public Byte unmarshal(final String object) {
+    public Object unmarshal(final String object) {
         return Optional.ofNullable(object).map(Byte::valueOf).orElse(null);
     }
 }

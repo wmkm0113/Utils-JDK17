@@ -399,7 +399,7 @@ public class StandardFile implements DataInput, DataOutput, Closeable {
 	 *
 	 * @param b read buffer
 	 * @return read length
-	 * @throws IOException If the first byte cannot be read for any reason other than ends of current file, or if the random access file has been closed, or if some other I/O error occurs.
+	 * @throws IOException If the first byte cannot be read for any reason other than the ends of the current file, or if the random access file has been closed, or if some other I/O error occurs.
 	 */
 	public int read(byte[] b) throws IOException {
 		if (this.originObject instanceof SmbRandomAccessFile) {
@@ -415,7 +415,7 @@ public class StandardFile implements DataInput, DataOutput, Closeable {
 	 * @param off buffer offset
 	 * @param len read length
 	 * @return read length
-	 * @throws IOException If the first byte cannot be read for any reason other than ends of current file, or if the random access file has been closed, or if some other I/O error occurs.
+	 * @throws IOException If the first byte cannot be read for any reason other than the ends of the current file, or if the random access file has been closed, or if some other I/O error occurs.
 	 */
 	public int read(byte[] b, int off, int len) throws IOException {
 		if (this.originObject instanceof SmbRandomAccessFile) {
@@ -608,7 +608,7 @@ public class StandardFile implements DataInput, DataOutput, Closeable {
 	/**
 	 * Open target file
 	 * @param mode	Open type(Read-Only/Read-Write)
-	 * @throws FileNotFoundException	if target file was not found
+	 * @throws FileNotFoundException	if the target file was not found
 	 */
 	private void openFile(String mode) throws FileNotFoundException {
 		if (this.filePath.startsWith(Globals.SAMBA_PROTOCOL)) {

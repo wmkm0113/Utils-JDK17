@@ -20,8 +20,6 @@ import org.nervousync.beans.core.BeanObject;
 import org.nervousync.commons.Globals;
 import org.nervousync.utils.StringUtils;
 
-import java.util.Optional;
-
 /**
  * <h2 class="en-US">JavaBean DataConverter</h2>
  * <h2 class="zh-CN">JavaBean数据转换器</h2>
@@ -39,20 +37,21 @@ public final class XmlBeanAdapter extends AbstractBeanAdapter {
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#unmarshal(Object)
      */
     @Override
-    public String marshal(final BeanObject object) {
-        return Optional.ofNullable(object)
-				.map(BeanObject::toXML)
-				.orElse(Globals.DEFAULT_VALUE_STRING);
+    public String marshal(final Object object) {
+        if (object instanceof BeanObject) {
+            return ((BeanObject) object).toXML();
+        }
+        return Globals.DEFAULT_VALUE_STRING;
     }
 
     /**
      * @see jakarta.xml.bind.annotation.adapters.XmlAdapter#marshal(Object)
      */
     @Override
-    public BeanObject unmarshal(final String string) {
+    public Object unmarshal(final String string) {
         if (StringUtils.isEmpty(string)) {
             return null;
         }
-        return (BeanObject) StringUtils.stringToObject(string, StringUtils.StringType.XML, this.beanClass);
+        return StringUtils.stringToObject(string, StringUtils.StringType.XML, this.beanClass);
     }
 }
