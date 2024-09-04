@@ -160,7 +160,7 @@
             <groupId>org.eclipse.angus</groupId>
             <artifactId>angus-core</artifactId>
             <version>${angus.version}</version>
-            <scope>runtime</scope>
+            <scope>compile</scope>
             <exclusions>
                 <exclusion>
                     <groupId>jakarta.activation</groupId>
@@ -391,11 +391,6 @@
                     <artifactId>jakarta.activation-api</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.xml.rpc</groupId>
-            <artifactId>jakarta.xml.rpc-api</artifactId>
-            <version>1.1.4</version>
         </dependency>
         <!-- Jersey Support -->
         <dependency>
